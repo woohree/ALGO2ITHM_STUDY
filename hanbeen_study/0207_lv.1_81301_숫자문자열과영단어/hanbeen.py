@@ -3,7 +3,7 @@ def solution(s):
         if s.startswith('0') or s.startswith('z'):
             return '0이나 zero로 시작하면 안됩니다.'
     else:
-        return 's의 길이가 너무 깁니다.'
+        return 's의 길이가 너무 깁니다..'
     
     if s.find('one') != -1:
         return solution(s.replace('one', '1'))
