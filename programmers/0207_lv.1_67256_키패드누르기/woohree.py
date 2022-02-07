@@ -1,4 +1,4 @@
-def solution(numbers, hand):
+def solution(numbers, hand):  # 40분
     answer = ''
     location_L = 10
     location_R = 12
