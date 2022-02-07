@@ -1,4 +1,4 @@
-def solution(s):    
+def solution(s):  # 20분
     answer = ''
     words = {'zero': '0',
              'one': '1',

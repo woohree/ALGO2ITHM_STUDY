@@ -1,4 +1,4 @@
-def solution(id_list, report, k):
+def solution(id_list, report, k):  # 1시간, 포기
     
     answer = [0] * len(id_list)
     set_reports = []
