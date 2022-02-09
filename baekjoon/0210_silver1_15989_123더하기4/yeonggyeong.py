@@ -6,10 +6,9 @@ def plus(number):
             [1, 1, 1], ]
 
     for _ in range(number-3):
-        answer.append([0,0,0])
+        answer.append([1,0,0])
 
     for num in range(3,number):
-        answer[num][0] = 1
         answer[num][1] = answer[num-2][0] + answer[num-2][1]
         answer[num][2] = answer[num-3][0] + answer[num-3][1] + answer[num-3][2]
 
