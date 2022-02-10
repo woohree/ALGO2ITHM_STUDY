@@ -1,7 +1,7 @@
 # 21:50 시작/ 22:20 1,2,3만 쓰는거 깨달음/ 23:00 1,2,3에서 자기 숫자만 있는 경우를 생각해냄 / 24:30 포기
-# 재도전, 22:40 시작 / 24:20 왜 틀린지 모르겠음 ㅋㅋ 아
+# 재도전, 22:40 시작 / 24:20 끝
 def plusman(number):
-    result = 1 + (number//2) + (number//3) + (number//5)
+    result = 1 + (number//2) + (number//3) + (number//5)  #
     if number > 5:
         if number % 5 == 0:
             result += 3*((number//5)-1)
