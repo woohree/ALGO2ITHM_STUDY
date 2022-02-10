@@ -14,8 +14,11 @@ def plusman(number):
     return result
 
 T = int(input())
-
+goal = []
 for tc in range(1, T+1):
     n = int(input())
     ans = plusman(n)
-    print(ans)
+    goal.append(ans)
+
+for tc in range(T):
+    print(goal[tc])
