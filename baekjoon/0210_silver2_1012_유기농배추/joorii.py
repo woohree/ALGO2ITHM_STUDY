@@ -4,44 +4,45 @@
 # 배추밭 가로길이 M / 배추밭 세로길이 N / 배추 위치 개수 K
 # 배추의 위치 X, Y 
 
-# 1. 배추밭 리스트를 반복문을 통해 전체 탐색하면서 
-# 2. 배추밭 리스트에 배추가 있을 때 (cabbage_list == 1)
-# 3. 체크용 리스트에서 해당 위치 상하좌우에 또 다른 배추가 있는지 조사
-# 3 - 1. 체크용 리스트에서 해당 위치 상하좌우에 다른 배추가 없다면, 0 -> 1 변환 후 count 1 증가
-# 3 - 2. 체크용 리스트에서 해당 위치 상하좌우에 다른 배추가 있다면, 0 -> 1 변환
+import sys
+sys.stdin = open('input.txt')
 
-t = int(input())
 
-for tc in range(t):
-    m, n, k = map(int, input().split())
+def find_warm(x, y):
+    # 배추밭 범위를 벗어났을 때
+    if x < 0 or y < 0 or x >= N or y >= M:
+        return
 
-    # 배추밭 리스트
-    cabbage_list = [[0] * m for _ in range(n)]
-    check_list = [[0] * m for _ in range(n)] 
+    # 배추밭에 배추가 없을 때
+    if cabbage_list[x][y] == 0:
+        return
+
+    # 탐색한 배추밭은 0으로 변경
+    cabbage_list[x][y] = 0
+
+    # 상하좌우 사방향 탐색
     move_list = [[-1, 0], [0, 1], [1, 0], [0, -1]]
+
+    for move in move_list:
+        find_warm(x + move[0], y + move[1])
+
+
+T = int(input())
+
+for tc in range(T):
+    M, N, K = map(int, input().split())
+    cabbage_list = [[0] * M for _ in range(N)]
     count = 0
 
-    for _ in range (k):
+    for _ in range(K):
         x, y = map(int, input().split())
         cabbage_list[y][x] = 1
 
-    for i in range(len(check_list)):
-        for j in range(len(check_list[i])):
-
+    for i in range(N):
+        for j in range(M):
+            # 배추 밭에 배추가 있을 때
             if cabbage_list[i][j] == 1:
-                for move in move_list:
-                    # 배추밭 범위를 벗어났을 때 
-                    # out of range
-                    if (i + move[0] < 0) or (j + move[1] < 0) or (i + move[0] >= n) or (j + move[1] >= m):
-                        continue
-                    # 주변에 다른 배추흰지렁이 영역이 있을 때
-                    elif check_list[i + move[0]][j + move[1]] == 1:
-                        check_list[i][j] = 1
-                        break
-                
-                # 주변에 다른 배추흰지렁이가 없을 때
-                if check_list[i][j] == 0:
-                    count += 1
-                    check_list[i][j] = 1
+                find_warm(i, j)
+                count += 1
 
-    print(f'{count}')
+    print(count)
