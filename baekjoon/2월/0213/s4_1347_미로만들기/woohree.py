@@ -8,8 +8,8 @@ def get_map(location, map):
     # F 등장 전까지, R, L의 등장 횟수 누적 
     jR = 0
     jL = 0
-    # 시작시점 표시
-    map[location[0]][location[1]] = '여기요'
+    # 시작지점 표시
+    map[location[0]][location[1]] = '.'
     # 방향결정 + 이동
     for direction in directions:
         # R 등장 시,
@@ -30,28 +30,40 @@ def get_map(location, map):
             # 남쪽으로 한 칸 이동
             if jR == jL:
                 location[0] += 1
-                map[location[0]][location[1]] = '여기요'
+                map[location[0]][location[1]] = '.'
             # R, L 등장 횟수가 다른 경우,
             # R, L 등장 횟수 차이에 따라 이동
             elif jR > jL:
                 location[0] += R[jR-jL][0]
                 location[1] += R[jR-jL][1]
-                map[location[0]][location[1]] = '여기요'
+                map[location[0]][location[1]] = '.'
             elif jR < jL:
                 location[0] += L[jL-jR][0]
                 location[1] += L[jL-jR][1]
-                map[location[0]][location[1]] = '여기요'
+                map[location[0]][location[1]] = '.'
     return map
+
+# 출력 가로 길이
+def get_col(ans):
+    col_list = []
+    for row2 in range(len(ans)):
+        for col in range(len(ans)):
+            # '.' 이 나왔을 때, 인덱스를 뽑아 min, max 값을 출력 가로 길이로 씀
+            if ans[row2][col] == '.':
+                col_list.append(col)
+    return [min(col_list), max(col_list)]
+
 # 입력
 length = int(input())
 directions = input()
-# 기본 지도 (한 변의 길이 length*2+1 인 정사각형)
-map = [[1] * (2*length+1) for _ in range(2*length+1)]
-print(map)
+# 기본 지도 (한 변의 길이 101 인 정사각형)
+map = [['#'] * 101 for _ in range(101)]
 # 시작 위치, 지도의 중앙 지점
-location = [length+1, length+1]
-
+location = [50, 50]
+# 출력
 ans = get_map(location, map)
-print(ans)
-
-# 지도는 만들었는데 출력값 어떻게 맞추는지 모르겠당...
+for row in range(len(ans)):
+    if not ans[row] == ['#'] * (101):
+        a = get_col(ans)
+        final_ans = ''.join(ans[row][a[0]:a[1]+1])
+        print(final_ans)
