@@ -62,6 +62,7 @@ map = [['#'] * 101 for _ in range(101)]
 location = [50, 50]
 # 출력
 ans = get_map(location, map)
+# print(ans)
 for row in range(len(ans)):
     if not ans[row] == ['#'] * (101):
         a = get_col(ans)
