@@ -21,8 +21,8 @@ def solution(n, a_list, b_list):
         # 찾은 최솟값과 최대값을 곱하여 리스트에 저장
         answer_lst.append(min_a[0] * max_b[0])
         # 해당 값 삭제 => [1, 1, 1, 6, 0] , [2, 7, 8, 3, 1] --> [1, 1, 1, 6], [2, 7, 3, 1]
-        del a_list[min_a[1]]
-        del b_list[max_b[1]]
+        a_list[min_a[1]] = 999999
+        b_list[max_b[1]] = -111111
 
     answer = 0
     for an in answer_lst:

@@ -41,6 +41,7 @@ for i in range(0, len(coding), lines):
 answers = []
 for k in key:
     for idx, zip_list in enumerate(zip(chr_list,coding_lst)):
+        # 0 [A, [EIAA]] 1 [B, [HEBX]] ~
         if k == zip_list[0]:
             answers.append(zip_list[1])
             chr_list[idx] = '99'
