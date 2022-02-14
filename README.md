@@ -5,7 +5,10 @@
 ## 주의 사항.
 
 - **`작업과 push는 반드시 본인 브랜치에서!`**
-- **`master에서 pull받고, 본인 브랜치에서 merge!`**
+
+- **`$ git pull origin master (본인 브랜치에서)`**
+
+- [ALGO2ITHM_Notion]: https://algo2ithm.notion.site/AlGO2ITHM_STUDY-c0ca1a1760fc441da038cf033f7e0b95
 
 ## 언어.
 
@@ -15,14 +18,10 @@
 
 - 브랜치명: 본인 이름 혹은 ID
 
-## 폴더 구조.
+## 파일명.
 
 - 사이트명\문제명\코드 파일
-  - 예) programmers\0207_lv.1_92334_신고결과받기\woohree.py
-- 폴더명
-  - 사이트 폴더명: 사이트명
-  - 문제 폴더명: 마감날짜\_난이도\_문제no.(있다면)_문제명
-  - 파일명: 본인 이름 혹은 ID
+  - `baekjoon\월\날짜\문제\<이름 혹은 ID>.py`
 
 ## 커밋.
 
@@ -30,7 +29,9 @@
 
 ## 규칙.
 
-- 정할 예정?
+- 주 5개 이상 목표!
+- 일지 당일 작성 권장!
+- merge는 모임끝나고 한번에!
 
 ## 일정.
 
@@ -73,7 +74,11 @@
    # 현재 브랜치는 생성한 브랜치(woohree)
    $ git add.
    $ git commit -m '성공!'
-   $ git push --set-upstream origin woohree  # 브랜치를 생성하고 처음 푸시하는 경우에만 --set-upstream 명령어가 필요
+   
+   # 브랜치를 생성하고 처음 푸시하는 경우에만 --set-upstream 명령어가 필요
+   $ git push --set-upstream origin woohree
+   # 처음 이후
+   $ git push origin woohree
    ```
 
 4. Pull request를 작성합니다. ref) https://epicarts.tistory.com/98
@@ -83,15 +88,11 @@
    - 없을 시, New pull request 버튼을 클릭하고, compare 란의 브랜치를 본인의 브랜치명으로 고른 뒤 Create pull request 클릭
    - 내용 작성(optional) 후 Create pull request 클릭
 
-5. 관리자가 모든 request를 merge하면 최신 버전의 ***master***브랜치를 pull 하고, 본인의 브랜치에서 master 브랜치를 merge합니다.
+5. 관리자가 모든 request를 merge하면 최신 버전의 ***master***브랜치를 pull 하고, 본인의 브랜치에서 3~4를 반복합니다.
 
    ```bash
    # 최신 버전 pull
-   $ git checkout master  # 반드시 master 브랜치에서 pull 할 것!
+   # 현재 브랜치는 생성한 브랜치
    $ git pull origin master
-   
-   # 본인 브랜치에 merge
-   $ git checkout woohree
-   $ git merge master
    ```
 
