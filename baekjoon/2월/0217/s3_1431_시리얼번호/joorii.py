@@ -40,4 +40,4 @@ for tc in range(T):
     N = int(input())
     serials = [list(map(str, input())) for _ in range(N)]
 
-    print('0x08'.isdigit())
+    sorted_by_serial()
