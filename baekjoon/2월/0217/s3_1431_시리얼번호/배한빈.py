@@ -9,7 +9,6 @@
 # 사전순 정렬을 마지막으로 하면 1,2조건으로 정렬했던것이 다시 섞일 위험이 있기 때문
 
 import sys
-
 sys.stdin = open('input.txt')
 
 N = int(input())
