@@ -14,7 +14,7 @@ sys.stdin = open('input.txt')
 N = int(input())
 serial_numbers = [input() for _ in range(N)]
 
-# 숫자들만의 total을 비교하는 함수
+# 숫자들만의 total을 비교하는 함수~
 def compare_total(a, b):
     numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
     a_sum = 0
