@@ -1,0 +1,6 @@
+5
+New
+Open
+Save
+Save As
+Save All

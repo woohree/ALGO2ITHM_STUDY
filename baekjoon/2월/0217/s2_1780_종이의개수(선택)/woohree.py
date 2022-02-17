@@ -28,7 +28,6 @@ def get_number_of_papers(matrix, N):
             cnt_zero += 1
         elif matrix[0][0] == 1:
             cnt_plus += 1
-
     else:
         for i in range(1, 4):
             new = []
