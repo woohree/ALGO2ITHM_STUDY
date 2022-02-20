@@ -1,6 +1,3 @@
-5
-New
-Open
-Save
-Save As
-Save All
+2
+    a    b bcd
+a a acd
