@@ -1,4 +1,5 @@
-3
-happy
-new
-year
+4
+aba
+abab
+abcabc
+a
