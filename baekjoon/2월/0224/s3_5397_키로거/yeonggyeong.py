@@ -20,7 +20,7 @@ def get_password(input_key):
         # right_s 최신값을 left_s 추가 ( 오른쪽으로 커서 이동 )
         elif key == '>':
             if right_s:
-                left_s.append(right_s.pop())
+                left_s.append(right_s.pop()) 
 
         # -이고, left_s가 비어있지 않을때
         # left_s의 최신값을 삭제 (왼쪽값을 삭제하기 때문에 left_s에서 삭제)

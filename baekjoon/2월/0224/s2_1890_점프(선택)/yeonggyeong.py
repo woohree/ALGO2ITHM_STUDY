@@ -22,7 +22,7 @@ def get_roads(N, matrix):
                 if col+number < N:
                     dp[row][col+number] += dp[row][col]
 
-N = int(input())
+N = int(input()) 
 matrix = [list(map(int, input().split())) for _ in range(N)]
 answer = get_roads(N, matrix)
 print(answer)

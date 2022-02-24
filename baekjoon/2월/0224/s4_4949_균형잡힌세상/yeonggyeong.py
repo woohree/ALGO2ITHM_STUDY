@@ -22,8 +22,7 @@ def solution(words):
                 return 'no'
     # 닫는 괄호 없는 여는 괄호가 남아있을 경우에도 0 반환
     if len(stack) > 0:
-        return 'no'
-
+        return 'no' 
     return 'yes'
 
 flag = True
