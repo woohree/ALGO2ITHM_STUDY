@@ -9,29 +9,33 @@
 # input()을 sys.stdin.readline()으로 바꿔서 제출해봤는데 그대로
 # deque도 빠르다그랬는데 안됨.. 연결리스트 써야할거같은데 너무 귀찮다.
 
+# 결국 pass~~!
+# 결국 temp라는 리스트 선언해서 푸는게 시간을 훨씬 줄여준다.
+
 import sys
 sys.stdin = open('B.txt')
 
-from collections import deque
-
-T = int(sys.stdin.readline())
+T = int(input())
 for tc in range(1, T+1):
-    sentence = deque(list(sys.stdin.readline()))
+    sentence = list(input())
     L = len(sentence)
 
-    password = deque([])
+    password = []
+    temp = []
     count = 0
     for word in sentence:
         if word == '<':
             # password가 True일 경우, len(password) - count이 0보다는 커야하는 조건 하에 카운트 한다.
-            if password:
-                if len(password) - count > 0:
+            if password or temp:
+                if len(password) + len(temp) - count > 0:
+                    temp.append(password.pop())
                     count += 1
 
         elif word == '>':
             # password가 True일 경우, count - 1이 0보다는 크거나 같아야 하는 조건 하에 빼준다.
-            if password:
+            if password or temp:
                 if count - 1 >= 0:
+                    password.append(temp.pop())
                     count -= 1
 
         elif word == '-':
@@ -40,17 +44,9 @@ for tc in range(1, T+1):
                 password.pop()
 
         else:
-            if count == 0:
-                # sys.stdin.readline()을 쓰면 마지막에 '\n'이 같이 출력돼서 안 나오게끔 조건 설정
-                if word != '\n':
-                    password.append(word)
-                else:
-                    break
-            # count가 0이 아니면 위치를 바꿔줘야 한다는 뜻
-            else:
-                password.append(word)
-                for c in range(1, count + 1):
-                    password[len(password) - c], password[len(password) - c - 1] = password[len(password) - c - 1], password[len(password) - c]
+            password.append(word)
 
     password = ''.join(password)
-    print(password)
+    temp = ''.join(temp[::-1])
+    print(password, end='')
+    print(temp)
