@@ -1,6 +1,7 @@
 import sys
 sys.stdin = open('G.txt')
 
+
 def solution(words):
     stack = []
     for word in words:
@@ -24,6 +25,7 @@ def solution(words):
     if len(stack) > 0:
         return 'no' 
     return 'yes'
+
 
 flag = True
 while flag:
