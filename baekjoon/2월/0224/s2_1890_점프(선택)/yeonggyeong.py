@@ -1,6 +1,7 @@
 import sys
 sys.stdin = open('G.txt')
 
+
 def get_roads(N, matrix):
     # 각 원소까지 올 수 있는 길을 적는 dp 생성
     dp = [[0] * N for _ in range(N)]
@@ -21,6 +22,7 @@ def get_roads(N, matrix):
                     dp[row+number][col] += dp[row][col]
                 if col+number < N:
                     dp[row][col+number] += dp[row][col]
+
 
 N = int(input()) 
 matrix = [list(map(int, input().split())) for _ in range(N)]

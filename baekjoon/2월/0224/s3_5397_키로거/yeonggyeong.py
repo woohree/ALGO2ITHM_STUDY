@@ -1,6 +1,7 @@
 import sys
 sys.stdin = open('G.txt')
 
+
 def get_password(input_key):
     left_s = []
     right_s = []
@@ -33,6 +34,7 @@ def get_password(input_key):
     password = ''.join(password)
 
     return password
+
 
 T = int(input())
 
