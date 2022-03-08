@@ -53,6 +53,8 @@ def get_col(ans):
                 col_list.append(col)
     return [min(col_list), max(col_list)]
 
+import sys
+sys.stdin = open('input.txt')
 # 입력
 length = int(input())
 directions = input()
