@@ -19,18 +19,18 @@ def get_count(N):
     
     dp = [999] * (N + 1)
 
-    for i in range(1, N+1):
+    for j in range(1, N+1):
         for cnt in figure_cnt:
             # 대포알의 개수와 사면체를 만든 대포알의 개수가 같다면,
-            if cnt == i:
-                dp[i] = 1
+            if cnt == j:
+                dp[j] = 1
                 break
             # 대포알의 개수보다 사면체의 개수가 크다면 만들 수 없음
-            if i < cnt:
+            if j < cnt:
                 break
             # +1 하는 이유는 층이 1개인 사면체 추가
             # 대포알의 개수와 사면체를 만드는데 필요한 대포알의 개수가 완전히 같지 않기 때문
-            dp[i] = min(dp[i], 1 + dp[i-cnt])
+            dp[j] = min(dp[j], 1 + dp[j-cnt])
     
     return dp[-1]
 
