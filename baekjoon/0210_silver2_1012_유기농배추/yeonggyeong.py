@@ -1,27 +1,37 @@
-def solution(m, n, k):
-    lst = []
-    for _ in range(k):
-        lst.append(list(map(int, input().split())))
+import sys
+sys.stdin = open('input.txt')
 
-    matrix = [[0 for _ in range(m+1)] for _ in range(n+1)]
-    for i in lst:
-        r = i[1]
-        c = i[0]
-        matrix[r][c] = 1
 
-    result = 0
-    for r in range(n):
-        for c in range(m):
-            if matrix[r][c] == 1:
-                if matrix[r+1][c] == 0 and matrix[r][c+1] == 0:
-                    result += 1
+def dfs(row, col):
+    
+    dx = [1, -1, 0, 0]
+    dy = [0, 0, 1, -1]
 
-    return result
+    for idx in range(4):
+        row, col = row+dx[idx], col+dy[idx]
+
+        if 0 <= row < N and 0 <= col < M and matrix[row][col] != 0:
+            matrix[row][col] = 0
+            dfs(row, col)
+        row, col = row-dx[idx], col-dy[idx]
+
 
 T = int(input())
-answer = []
-for tc in range(T):
-    m, n, k = map(int, input().split(' '))
-    answer.append(solution(m, n, k))
 
-print(answer)
+for tc in range(T):
+    M, N, K = map(int, input().split())
+
+    matrix = [[0] * M for _ in range(N)]
+
+    for _ in range(K):
+        x, y = map(int, input().split())
+        matrix[y][x] = 1
+    cnt = 0
+    for x in range(N):
+        for y in range(M):
+            if matrix[x][y] != 0:
+                cnt += 1
+                matrix[x][y] = 0
+                dfs(x, y)
+
+    print(cnt)
