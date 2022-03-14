@@ -35,7 +35,7 @@ def max_wine():
             else:
                 dp[i] = temp_2
 
-            # [x,x,o]
+            # [o,o,x]
             if dp[i] < dp[i - 1]:
                 dp[i] = dp[i - 1]
 
