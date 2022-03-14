@@ -2,7 +2,6 @@ from collections import deque
 import sys
 sys.stdin = open('G.txt')
 
-
 def solution(relations):
     global n, want_x, want_y
 

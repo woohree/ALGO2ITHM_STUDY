@@ -1,6 +1,7 @@
 import sys
 sys.stdin = open('G.txt')
 
+
 def get_order(importances):
     # target인지 확인하기 위한 list 생성
     idx = list(range(n))
@@ -13,6 +14,7 @@ def get_order(importances):
         for importance in importances:
             if importance > max_importance:
                 max_importance = importance
+
         # 최댓값이 첫번째 값과 같다면 count +=1
         if importances[0] == max_importance:
             cnt += 1
