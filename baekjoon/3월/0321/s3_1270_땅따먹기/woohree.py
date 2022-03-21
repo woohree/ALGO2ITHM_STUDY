@@ -4,7 +4,7 @@ sys.stdin = open('L.txt')
 
 def who_is_conqueror(armies):
     army_dict = {}                              # 군대명: 병사 수
-    conqueror = max_army= 0                    # 정복한 군대명, 가장 많은 병사 수
+    conqueror = max_army = 0                    # 정복한 군대명, 가장 많은 병사 수
 
     for army in armies:                         # 병사들 돌면서,
         army_dict.setdefault(army, 0)           # 군대명 키가 없다면, 군대명: 0 으로 생성
