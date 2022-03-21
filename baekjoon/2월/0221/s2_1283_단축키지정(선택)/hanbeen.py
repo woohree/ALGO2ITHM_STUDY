@@ -15,42 +15,30 @@ N = int(input())
 words = [input().split() for _ in range(N)]
 
 short_cut = []
-for i in range(N):
-    answer = []
-    count = 0
-    for j in range(len(words[i])):
-        if words[i][j][0] not in short_cut:
-            short_cut.append(words[i][j][0].upper())
-            short_cut.append(words[i][j][0].lower())
-            answer.append(words[i][j].replace(words[i][j][0], '[' + words[i][j][0] + ']'))
-
-            if len(words[i]) > 1 and count == 0:
-                for k in range(1, len(words[i])):
-                    answer.append(words[i][k])
+for word in words:
+    check = 0
+    for w in range(len(word)):
+        if word[w][0].lower() not in short_cut:
+            short_cut.append(word[w][0].lower())
+            x = list(word[w])
+            x.insert(1, ']')
+            x.insert(0, '[')
+            word[w] = ''.join(x)
+            check += 1
             break
-        else:
-            count += 1
-            answer.append(words[i][j])
-    if count < len(words[i]):
-        answer = ' '.join(answer)
-        print(answer)
-
-    if count == len(words[i]):
-        for j in range(len(words[i])):  # 0~1
-            answer = []
-            count = end = 0
-            for m in range(len(words[i][j])):
-                if words[i][j][m] not in short_cut:
-                    short_cut.append(words[i][j][m].upper())
-                    short_cut.append(words[i][j][m].lower())
-                    answer.append(words[i][j].replace(words[i][j][m], '[' + words[i][j][m] + ']'))
-                    if len(words[i]) > 1 and count == 0:
-                        for k in range(1, len(words[i])):
-                            answer.append(words[i][k])
-                    end = 1
+    if check == 0:
+        for w in range(len(word)):
+            for i in range(1, len(word[w])):
+                if word[w][i].lower() not in short_cut:
+                    short_cut.append(word[w][i].lower())
+                    x = list(word[w])
+                    x.insert(i+1, ']')
+                    x.insert(i, '[')
+                    word[w] = ''.join(x)
+                    check += 1
                     break
-            if end != 0:
-                answer = ' '.join(answer)
-            else:
+            if check != 0:
                 break
-            print(answer)
+
+for n in range(N):
+    print(*words[n])
