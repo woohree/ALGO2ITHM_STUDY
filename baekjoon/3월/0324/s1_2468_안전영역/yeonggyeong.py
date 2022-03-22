@@ -2,7 +2,6 @@ import sys
 sys.setrecursionlimit(1000000)
 sys.stdin = open('G.txt')
 
-
 def dfs(row, col):
     
     dx = [1, -1, 0, 0]
@@ -51,7 +50,7 @@ for height in range(max_value):
             if new_matrix[row][col] == False:
                 island += 1
                 dfs(row, col)
-                
+
     # 섬의 최대 개수 구하기
     if island > max_island:
         max_island = island
