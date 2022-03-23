@@ -38,8 +38,8 @@ def kill_planet(r1, c1, r2, c2):
 
 N, M = map(int, sys.stdin.readline().rstrip().split())
 m = [list((map(int, sys.stdin.readline().rstrip()))) for _ in range(N)]
-blacnks, towns = ffind(m)
-comb = list(itertools.combinations(blacnks, 2))
+blanks, towns = ffind(m)
+comb = list(itertools.combinations(blanks, 2))
 ans = N*M
 for idx in range(len(comb)):
     T = kill_planet(comb[idx][0][0], comb[idx][0][1], comb[idx][1][0], comb[idx][1][1])
