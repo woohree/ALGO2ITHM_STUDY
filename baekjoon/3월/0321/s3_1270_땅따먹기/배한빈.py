@@ -1,5 +1,3 @@
-# 30분
-
 import sys
 sys.stdin = open('B.txt')
 

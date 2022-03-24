@@ -1,11 +1,9 @@
-# 20분
-
 import sys
 sys.stdin = open('B.txt')
 
 from itertools import permutations
 
-N, K = map(int, input().split())
+N, K = map(int, input().split())  # N: 운동키트 수, K: 하루 당 근손실
 exercise_kit = list(map(int, input().split()))
 
 # 순열 생성
