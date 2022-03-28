@@ -1,24 +1,58 @@
-# 21:50 시작/ 22:20 1,2,3만 쓰는거 깨달음/ 23:00 1,2,3에서 자기 숫자만 있는 경우를 생각해냄 / 24:30 포기
-# 재도전, 22:40 시작 / 24:20 끝
-def plusman(number):
-    result = 1 + (number//2) + (number//3) + (number//5)  #
-    if number > 5:
-        if number % 5 == 0:
-            result += 3*((number//5)-1)
-        elif number % 5 == 2:
-            result += (number//5)
-        elif number % 5 == 3:
-            result += 2*(number//5)
-        elif number % 5 == 4:
-            result += 3*(number//5)
-    return result
+import sys
+sys.stdin = open('input.txt')
 
-T = int(input())
-goal = []
-for tc in range(1, T+1):
-    n = int(input())
-    ans = plusman(n)
-    goal.append(ans)
 
-for tc in range(T):
-    print(goal[tc])
+"""
+1. n을 1, 2, 3의 합으로 나타낼 때, 중복을 없애기 위해 오름차순으로 정렬해 확인
+2. 1, 2, 3으로 끝나는 각각 합의 경우의 수를 더해줌
+3. n보다 3 작은 수에서 3을 더한 경우, 2 작은 수에서 2를 더한 경우, 1 작은 수에서 1을 더한 경우
+
+예시) n = 4일 때,
+1을 만드는 경우,
+1
+
+2를 만드는 경우,
+1+1
+2
+
+3을 만드는 경우,
+1+1+1
+1+2(2+1)
+3
+
+1을 만드는 경우에 3을 더하는 경우,
+1+3
+
+2를 만드는 경우에 2를 더하는 경우,
+1+1+2
+2+2
+
+3을 만드는 경우에 1을 더하는 경우,
+1+1+1+1
+나머지는 오름차순이 안됨
+1+2+1(x)
+3+1(x)
+"""
+
+
+T = int(sys.stdin.readline().rstrip())
+for _ in range(T):
+    n = int(sys.stdin.readline().rstrip())
+
+    if n > 3:
+        dp = [[1, 0, 0] for _ in range(n)]  # dp[0] => 끝에 1을 더하는 경우, => 오름차순으로 정렬하므로 무조건 하나 뿐!
+        dp[1][1] = 1                        # dp[1] => 끝에 2를 더하는 경우,
+        dp[2][1], dp[2][2] = 1, 1           # dp[2] => 끝에 3을 더하는 경우
+        for i in range(3, n):
+            dp[i][1] = dp[i-2][0] + dp[i-2][1]
+            dp[i][2] = dp[i-3][0] + dp[i-3][1] + dp[i-3][2]
+
+        print(sum(dp[-1]))
+
+    else:
+        if n == 1:
+            print(1)
+        elif n == 2:
+            print(2)
+        else:
+            print(3)

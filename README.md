@@ -57,21 +57,16 @@
 2. `Branch`를 생성합니다. *ref) https://goddaehee.tistory.com/274*
 
    ```bash
-   $ git branch woohree(예시)  # Branch 생성(ID, 이름 등 자유롭게)
-   $ git switch woohree  # 생성한 Branch로 이동
+   $ git switch -c <생성할 Branch명>  # Branch 생성 및 이동
    ```
-
+   
 3. 풀이한 `.py` 파일을 생성한 `Branch`에 업로드합니다. *ref) https://victorydntmd.tistory.com/91*
 
    ```bash
-   # 현재 Branch는 생성한 Branch(woohree)
-   $ git add.
+   # 현재 Branch는 생성한 Branch
+   $ git add .  # 현재 폴더 기준, 하위 모든 파일 추가(혹은 특정 경로를 지정해 주어도 무방)
    $ git commit -m '성공!'
-   
-   # Branch를 생성하고 처음 푸시하는 경우에만 --set-upstream 명령어가 필요
-   $ git push --set-upstream origin woohree
-   # 처음 이후
-   $ git push origin woohree
+   $ git push origin <생성한 Branch명>
    ```
 
 4. `Pull request`를 작성합니다. *ref) https://epicarts.tistory.com/98*
