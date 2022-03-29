@@ -11,10 +11,8 @@ def get_count(N):
         for i in range(3, N):
             count = dp[i-1] + dp[i-2] + dp[i-3]
             dp.append(count)
-    else:
-        return dp[N-1]
 
-    return dp[-1]
+    return dp[N-1]
     
 
 T = int(input())
