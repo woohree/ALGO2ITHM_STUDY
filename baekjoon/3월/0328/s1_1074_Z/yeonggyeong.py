@@ -1,6 +1,7 @@
 import sys
 sys.stdin = open('G.txt')
 
+
 def solution(N, x, y):
     global number
 
@@ -24,6 +25,7 @@ def solution(N, x, y):
     solution(N / 2, x, y + N / 2)
     solution(N / 2, x + N / 2, y)
     solution(N / 2, x + N / 2, y + N / 2)
+
 
 n, r, c = map(int, input().split())
 N = 2 ** n
