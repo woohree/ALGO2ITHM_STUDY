@@ -25,9 +25,18 @@ def greedy_dp(P):
     return sum(dp)
 
 
+def greedy_math(P):
+    result = 0
+    for i in range(N):
+        result += P[i] * (N-i)
+
+    return result
+
+
 N = int(input())
 P = list(map(int, input().split()))
 P.sort()
-ans = greedy_dp(P)
 # ans = greedy(P)
+# ans = greedy_dp(P)
+ans = greedy_math(P)
 print(ans)
