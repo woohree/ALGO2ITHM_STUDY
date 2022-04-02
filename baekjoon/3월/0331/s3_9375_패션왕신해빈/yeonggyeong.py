@@ -19,7 +19,7 @@ def get_case(N):
     for v in clothes.values():
         count *= (len(v) + 1)
     
-    # 전체 경우 빼주기
+    # 안 입는 경우
     return count - 1
 
 T = int(input())
