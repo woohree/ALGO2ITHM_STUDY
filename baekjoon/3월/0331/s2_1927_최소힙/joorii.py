@@ -2,6 +2,7 @@ import heapq
 import sys
 sys.stdin = open('M.txt')
 
+
 # heapq 사용
 def min_heap(n):
     if not arr and n == 0:
@@ -17,6 +18,7 @@ arr = []
 for i in range(N):
     num = int(sys.stdin.readline())
     min_heap(num)
+
 
 # heapq 미사용
 """
