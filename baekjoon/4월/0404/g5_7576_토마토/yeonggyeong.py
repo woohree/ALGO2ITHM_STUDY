@@ -41,6 +41,6 @@ for row in range(N):
         # 익지 않은 토마토가 존재한다면
         if matrix[row][col] == 0:
             print(-1)
-            exit(1)
+            exit(0)
     answer = max(answer, max(matrix[row]))
 print(answer - 1)
