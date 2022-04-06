@@ -25,7 +25,7 @@ def bfs(start):
                     if 0 < mat[new_r][new_c] < shark:           # 먹을 수 있는 물고기 추가
                         fish.append((new_r, new_c))
                     news.append((new_r, new_c))
-                    visited[now[0]][now[1]] = 1
+                    visited[new_r][new_c] = 1
 
         if fish:
             if len(fish) > 1:
