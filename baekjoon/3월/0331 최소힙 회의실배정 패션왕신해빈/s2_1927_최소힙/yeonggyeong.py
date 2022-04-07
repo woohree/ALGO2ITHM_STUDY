@@ -6,7 +6,6 @@ N = int(sys.stdin.readline())
 
 heap = []
 
-
 for i in range(N):
     number = int(sys.stdin.readline())
 

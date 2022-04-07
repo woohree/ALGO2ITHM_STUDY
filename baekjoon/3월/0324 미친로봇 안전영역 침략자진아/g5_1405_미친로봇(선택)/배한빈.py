@@ -4,40 +4,32 @@ import sys
 sys.stdin = open('B.txt')
 
 
-def robot(row, col, prob):
-    global idx, probability
-    # 동 서 남 북
-    dx = [1, -1, 0, 0]
-    dy = [0, 0, 1, -1]
+def robot(n, prob, row, col):
+    global answer
 
-    # 동 - 북 / 서 - 남 중 한 방향으로만 갈 때
-    if not (directions[0] and directions[1]) and not (directions[2] and directions[3]):
-        probability = 1.0
+    if n == N:
+        answer += prob
         return
 
-    visited[row][col] = 1
-
-    # N번째 이동을 마쳤을 때
-    if idx == N:
-        probability += prob
-        return
-
-    # N번만큼 반복
     for i in range(4):
-        if 0 <= row + dy[i] < 2*N+1 and 0 <= col + dx[i] < 2*N+1 and not visited[row + dy[i]][col + dx[i]]:
-            idx += 1
-            robot(row + dy[i], col + dx[i], prob * (directions[i] / 100))
-            idx -= 1
-            visited[row + dy[i]][col + dx[i]] = 0
+        if visited[row + moves[i][0]][col + moves[i][1]] == 0 and directions[i] != 0:
+            prob *= directions[i] / 100
+            visited[row + moves[i][0]][col + moves[i][1]] = 1
+            robot(n + 1, prob, row + moves[i][0], col + moves[i][1])
+            prob /= directions[i] / 100
+            visited[row + moves[i][0]][col + moves[i][1]] = 0
 
 
-# 동 서 남 북 확률
 N, *directions = map(int, input().split())
+
+moves = [[0, 1], [0, -1], [1, 0], [-1, 0]]
+
 visited = [[0] * (2*N+1) for _ in range(2*N+1)]
-# N만큼의 횟수를 카운트할 변수 idx, 단순 이동 경로 확률 probability
-idx = probability = 0
-robot(N, N, 1.0)
-print(probability)
+visited[N][N] = 1
+answer = 0
+robot(0, 1, N, N)
+
+print(answer)
 
 # 순열
 # def dfs(a, b, i):

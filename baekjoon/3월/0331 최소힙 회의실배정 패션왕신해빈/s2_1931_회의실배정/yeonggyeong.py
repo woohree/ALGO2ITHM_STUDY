@@ -6,7 +6,7 @@ def solution(N):
     times = [list(map(int, input().split())) for _ in range(N)]
 
     # 종료시간을 기준으로 오름차순
-    times.sort(key = lambda x: (x[1], x[0]))
+    times.sort(key=lambda x: (x[1], x[0]))
 
     meeting_cnt = 0
     last_time = 0
@@ -23,5 +23,4 @@ def solution(N):
 
 N = int(input())
 answer = solution(N)
-
 print(answer)
