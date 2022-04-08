@@ -46,7 +46,6 @@ def baby_shark():
 
             target = heapq.heappop(hq)
             fishes = []
-            hq = []
             temp -= 1
             if temp == 0:                               # 상어 크기 만큼의 물고기를 먹었을 때
                 shark_weight += 1                       # 상어 크기 1 증가
