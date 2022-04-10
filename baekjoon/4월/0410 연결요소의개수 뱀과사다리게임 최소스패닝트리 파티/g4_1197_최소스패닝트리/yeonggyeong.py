@@ -3,11 +3,13 @@ import sys, heapq
 sys.setrecursionlimit(10 ** 6)
 sys.stdin = open('G.txt')
 
+
 def find_set(x):
     if x == connected[x]:
         return x
     else:
         return find_set(connected[x])
+
 
 def union(a,b):
     a = find_set(a)
@@ -17,6 +19,7 @@ def union(a,b):
         connected[a] = b
     else:
         connected[b] = a
+
 
 V, E = map(int, sys.stdin.readline().split())
 
