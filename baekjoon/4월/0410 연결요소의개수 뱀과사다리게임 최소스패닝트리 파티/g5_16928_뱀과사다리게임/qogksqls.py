@@ -37,6 +37,7 @@ def bfs():
         if 100 in current:
             return
 
+
 N, M = map(int, sys.stdin.readline().rstrip().split())
 ladders = [list(map(int, sys.stdin.readline().rstrip().split())) for _ in range(N)]
 snakes = [list(map(int, sys.stdin.readline().rstrip().split())) for _ in range(M)]

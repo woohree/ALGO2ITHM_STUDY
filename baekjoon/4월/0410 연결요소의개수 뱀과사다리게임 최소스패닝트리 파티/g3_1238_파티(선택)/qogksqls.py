@@ -1,7 +1,47 @@
-import sys
+import sys, heapq
 sys.stdin = open('B.txt')
 
 
+def dijkstra(village, graph, x):
+    graph[x-1] = 0
+    queue = []
+    heapq.heappush(queue, (graph[x-1], graph.index(graph[x-1])))
+
+    while queue:
+        vertex, index = heapq.heappop(queue)
+        if graph[index] < vertex:
+            continue
+        else:
+            for e, w in village[index+1].items():
+                weight = w + vertex
+                if graph[e-1] >= weight:
+                    graph[e-1] = weight
+                    heapq.heappush(queue, (graph[e-1], e-1))
+
+
+INF = sys.maxsize
+N, M, X = map(int, sys.stdin.readline().rstrip().split())
+village = {}
+rev_village = {}
+roads = [INF for _ in range(N)]
+reverse_roads = [INF for _ in range(N)]
+for i in range(1, N+1):
+    village[i] = {}
+    rev_village[i] = {}
+for _ in range(M):
+    u, v, w = map(int, sys.stdin.readline().rstrip().split())
+    village[u][v] = w
+    rev_village[v][u] = w
+
+dijkstra(village, roads, X)
+dijkstra(rev_village, reverse_roads, X)
+
+my_max = 0
+for i in range(len(roads)):
+    my_max = max(my_max, roads[i] + reverse_roads[i])
+print(my_max)
+
+'''
 # dfs로 풀이
 def go_home_dfs(x, t):
     global min_go_home
@@ -37,12 +77,12 @@ def go_x_dfs(s, t):
 
 N, M, X = map(int, sys.stdin.readline().rstrip().split())  # 학생 수(마을 개수), 단방향 도로 개수, 찾아 갈 마을 번호
 roads = [list(map(int, sys.stdin.readline().rstrip().split())) for _ in range(M)]  # 시작점, 끝점, 소요시간
-
+    
 my_max = 0
 for student in range(1, N+1):
     # X번 마을 찾아가기
     visited = [0] * (N+1)
-    min_go_x = 9999999999999
+    min_go_x = 99999999999
     go_x_dfs(student, 0)
 
     # 집가기
@@ -55,3 +95,4 @@ for student in range(1, N+1):
     my_max = max(my_max, temp)
 
 print(my_max)
+'''
