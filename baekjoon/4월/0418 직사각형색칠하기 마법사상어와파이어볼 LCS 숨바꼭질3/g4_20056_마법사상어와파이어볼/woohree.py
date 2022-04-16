@@ -11,43 +11,43 @@ def shoot(fireballs):
             r, c, m, s, d = fireballs[i]
             if s and m:                         # 속도, 질량이 0보다 커야함
                 fireballs[i][0] += moves[d][0]*s
-                while fireballs[i][0] < 1:      # 인덱스 벗어나는거 작업
-                    fireballs[i][0] = N+fireballs[i][0]
-                while fireballs[i][0] > N:
-                    fireballs[i][0] = fireballs[i][0]-N
+                # while fireballs[i][0] < 1:      # 인덱스 벗어나는거 작업
+                #     fireballs[i][0] = N+fireballs[i][0]
+                # while fireballs[i][0] > N:
+                #     fireballs[i][0] = fireballs[i][0]-N
 
                 fireballs[i][1] += moves[d][1]*s
-                while fireballs[i][1] < 1:      # 인덱스 벗어나는거 작업
-                    fireballs[i][1] = N+fireballs[i][1]
-                while fireballs[i][1] > N:
-                    fireballs[i][1] = fireballs[i][1]-N
+                # while fireballs[i][1] < 1:      # 인덱스 벗어나는거 작업
+                #     fireballs[i][1] = N+fireballs[i][1]
+                # while fireballs[i][1] > N:
+                #     fireballs[i][1] = fireballs[i][1]-N
 
-                new_r, new_c = fireballs[i][0], fireballs[i][1]
+                new_r, new_c = fireballs[i][0] % N, fireballs[i][1] % N
                 if temp.get((new_r, new_c)):    # 겹치면, append
                     temp[(new_r, new_c)].append([new_r, new_c, m, s, d])
                 else:                           # 처음이면, 키 추가
                     temp[(new_r, new_c)] = [[new_r, new_c, m, s, d]]
 
-        for key in temp:                        # 겹치는 애들 처리 작업
-            if len(temp[key]) > 1:
+        for key, vals in temp.items():          # 겹치는 애들 처리 작업
+            if len(vals) > 1:
                 new_m = new_s = d_flag_odd = d_flag_even = 0
-                for i in range(len(temp[key])):
-                    new_m += temp[key][i][2]    # 질량, 속도 총합 구하기
-                    new_s += temp[key][i][3]
-                    if temp[key][i][4] % 2:     # 방향 홀, 짝 체크
+                for i in range(len(vals)):
+                    new_m += vals[i][2]         # 질량, 속도 총합 구하기
+                    new_s += vals[i][3]
+                    if vals[i][4] % 2:          # 방향 홀, 짝 체크
                         d_flag_odd += 1
                     else:
                         d_flag_even += 1
-                if d_flag_odd == len(temp[key]) or d_flag_even == len(temp[key]):
+                if d_flag_odd == len(vals) or d_flag_even == len(vals):
                     new_d = (0, 2, 4, 6)        # 전부 홀or짝일 경우,
                 else:
                     new_d = (1, 3, 5, 7)        # 아닐 경우,
 
                 for i in range(4):              # 겹치는 애들 작업한 뒤, 새로 파이어볼 4개 만들기
                     if new_m // 5:
-                        news.append([key[0], key[1], new_m//5, new_s//len(temp[key]), new_d[i]])
+                        news.append([key[0], key[1], new_m//5, new_s//len(vals), new_d[i]])
             else:                               # 안 겹치는 애들은 그대로 추가
-                news.append(temp[key][0])
+                news.append(*vals)
         fireballs = news                        # 파이어볼들 갱신
     return fireballs
 
@@ -55,9 +55,6 @@ def shoot(fireballs):
 N, M, K = map(int, sys.stdin.readline().split())
 fireballs = [list(map(int, sys.stdin.readline().split())) for _ in range(M)]
 result = shoot(fireballs)
-ans = 0
-for i in range(len(result)):
-    ans_m, ans_s = result[i][2], result[i][3]
-    if ans_s and ans_m:
-        ans += ans_m
+ans = sum(map(lambda x: x[2], result))
 print(ans)
+# print(-1//7, -1%7)
