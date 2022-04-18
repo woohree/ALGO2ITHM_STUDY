@@ -1,3 +1,4 @@
+from pprint import pprint
 import sys
 sys.stdin = open('M.txt')
 
@@ -12,7 +13,7 @@ def join_and_split(r, c):
 
     matrix[r][c] = []
     if temp_m // 5 > 0:     # 질량이 0 초과일 때
-        d = (1, 3, 5, 7) if temp_d != 0 or temp_d != ball_cnt else (0, 2, 4, 6)
+        d = (0, 2, 4, 6) if temp_d == 0 or temp_d == ball_cnt else (1, 3, 5, 7)
         for i in range(4):
             matrix[r][c].append([r, c, temp_m // 5, temp_s // ball_cnt, d[i]])
 
@@ -43,7 +44,7 @@ def wizard_shark():
         else:
             c = c + (ways[d][1] * s) + N if c + (ways[d][1] * s) < 0 else c + (ways[d][1] * s) - N
 
-        matrix[r][c].append([r, c, m, s, d])
+        matrix[r][c].append([r, c, m, ball[3], d])
 
     # 한 칸에 두 개 이상의 파이어볼이 있을 때
     for i in range(N):
