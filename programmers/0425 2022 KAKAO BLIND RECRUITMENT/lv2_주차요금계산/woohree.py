@@ -1,6 +1,7 @@
 import math
 
 
+# 30분
 def solution(fees, records):
     basic_time, basic_fee, unit_time, unit_fee = fees
 
