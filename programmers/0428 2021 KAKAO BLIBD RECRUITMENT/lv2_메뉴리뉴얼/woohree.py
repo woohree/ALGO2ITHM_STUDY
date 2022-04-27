@@ -10,7 +10,13 @@ def solution(orders, course):
             order = sorted(list(order))
             temp.extend(list(itertools.combinations(order, n)))
 
-        flags = Counter(temp)                   # 리스트에서 같은 값을 키로, 중복 횟수를 값으로 만든 딕셔너리
+        # flags1 = Counter(temp)
+        flags = {}                              # 리스트에서 같은 값을 키로, 중복 횟수를 값으로 만든 딕셔너리
+        for t in temp:
+            flags.setdefault(t, 0)
+            flags[t] += 1
+        # print(flags1)
+        # print(flags)
         ans = 2
         ans_lst = []
         for key, values in flags.items():
