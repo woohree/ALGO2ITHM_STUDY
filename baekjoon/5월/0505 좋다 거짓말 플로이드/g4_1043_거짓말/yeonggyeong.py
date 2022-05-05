@@ -28,6 +28,6 @@ if person[0] == 0:
     print(M)
 else:
     # 진실을 아는 사람 수/ 번호
-    cnt, people = person[0], person[1:]
-    answer = solution(people, parties)
+    true_cnt, true_people = person[0], person[1:]
+    answer = solution(true_people, parties)
     print(answer)
