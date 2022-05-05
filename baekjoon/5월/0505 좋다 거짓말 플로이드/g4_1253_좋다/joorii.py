@@ -8,10 +8,7 @@ ans = 0
 dic_a = dict()              # 가능한 모든 조합의 합 key, 조합 인덱스 리스트 value
 for i in range(N - 1):
     for j in range(i + 1, N):
-        if dic_a.get(A[i] + A[j]):
-            dic_a[A[i] + A[j]].append((i, j))
-            continue
-        dic_a.setdefault(A[i] + A[j], [(i, j)])
+        dic_a.setdefault(A[i] + A[j], []).append((i, j))
 
 for idx in range(N):
     if dic_a.get(A[idx]):   # 각 숫자가 두 숫자의 합이 될 수 있을 때
