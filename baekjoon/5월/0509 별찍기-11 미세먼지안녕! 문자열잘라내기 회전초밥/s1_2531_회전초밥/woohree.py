@@ -18,17 +18,17 @@ for i in range(k-1):                    # 회전해야 하니까, 초밥 접시 
 l = r = 0                               # 좌, 우 포인터
 ans = plate_cnt = sushi_cnt = 0         # 출력값, 먹은 접시 카운트, 초밥 종류 카운트
 while l < N:
-    if plate_cnt == k:                  # k번 연속으로 먹은 경우,
-        sushi[plates[l]] -= 1           # 딕셔너리에서, 먹은 접시 중 제일 왼쪽에 있는거 안먹었다고 바꾸기
-        if not sushi[plates[l]]:        # 스시 값이 0이면 안먹은 거,
+    if plate_cnt == k:                  # k번 연속으로 먹은 경우, (왼쪽 접시 하나 빼주기)
+        sushi[plates[l]] -= 1           # 딕셔너리에서, l번째 접시 안먹었다고 바꾸기
+        if not sushi[plates[l]]:        # 스시 값이 0이면 종류 추가했던 거니까,
             sushi_cnt -= 1              # 초밥 종류 -1
         l += 1                          # 좌측 포인터 +1
         plate_cnt -= 1                  # 먹은 접시 -1
 
-    else:                               # 아직 k번 못 채운 경우,
+    else:                               # 아직 k번 못 채운 경우, (오른쪽 접시 하나 더 먹기)
         if not sushi[plates[r]]:        # 안먹은 거면,
             sushi_cnt += 1              # 초밥 종류 +1
-        sushi[plates[r]] += 1           # 딕셔너리에서, 먹은 접시 중 제일 오른쪽에 있는거 먹었다고 체크
+        sushi[plates[r]] += 1           # 딕셔너리에서, r번째 접시 먹었다고 체크
         r += 1                          # 우측 포인터 +1
         plate_cnt += 1                  # 먹은 접시 +1
 
