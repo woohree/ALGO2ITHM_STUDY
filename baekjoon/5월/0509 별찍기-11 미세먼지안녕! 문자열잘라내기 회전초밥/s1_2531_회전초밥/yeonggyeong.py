@@ -5,17 +5,23 @@ sys.stdin = open('G.txt')
 def solution(sushi):
     dic = dict()
     for i in range(N):
+        # 연속된 k개 선택
         start = i
         end = (i + K) % N
         if end < start:
             eat = sushi[start:] + sushi[:end]
         else:
             eat = sushi[start:end]
+
+        # 쿠폰번호 추가
         eat.append(c)
         kind = len(set(eat))
+
+        # 최댓값일때
         if kind == K + 1:
             return K + 1
         
+        # 갯수 딕셔너리 형태로 만들기
         if dic.get(kind):
             dic[kind] += 1
         else:

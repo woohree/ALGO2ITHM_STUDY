@@ -37,11 +37,6 @@ def solution(strings):
 print(solution(strings))
 
 
-
-# for string in strings:
-#     if len(string) != set(strings):        
-#         pass
-
 # def solution(strings):
 #     dic = dict()
 #     strings.pop(0)

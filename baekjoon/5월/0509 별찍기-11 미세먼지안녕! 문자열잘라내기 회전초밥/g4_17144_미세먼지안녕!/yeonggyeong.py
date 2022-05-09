@@ -36,6 +36,7 @@ def operate_air_cleaner(air_cleaner):
 R, C, T = map(int, sys.stdin.readline().split())
 matrix = [list(map(int, sys.stdin.readline().split())) for _ in range(R)]
 
+# 공기청정기 위치 찾기
 for i in range(R):
     if -1 in matrix[i]:
         air_cleaner = (i, i+1)
@@ -48,6 +49,7 @@ for t in range(T):
     temp = []
     for row in range(R):
         for col in range(C):
+            # 미세먼지 값이 5 이상인 위치만 찾기
             if matrix[row][col] >= 5:
                 dust = matrix[row][col] // 5
                 cnt = 0
@@ -62,8 +64,9 @@ for t in range(T):
         matrix[x][y] += d
 
     operate_air_cleaner(air_cleaner)
+    
 answer = sum([sum(i) for i in matrix])
-print(answer+2)
+print(answer + 2)
 
 
 # import sys
