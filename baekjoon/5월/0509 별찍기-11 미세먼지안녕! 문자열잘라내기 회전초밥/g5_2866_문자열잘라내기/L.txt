@@ -1,3 +1,5 @@
-2 6
-dobarz
-adatak
+4 6
+mrvica
+mrvica
+marica
+mateja
