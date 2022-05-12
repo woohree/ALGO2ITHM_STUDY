@@ -1,9 +1,11 @@
-2
-3
-Fred Barney
-Barney Betty
-Betty Wilma
-3
-Fred Barney
-Betty Wilma
-Barney Betty
+1
+9
+a b
+c d
+e f
+g h
+b c
+f g
+d e
+h a
+b g
