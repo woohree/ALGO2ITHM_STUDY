@@ -1,10 +1,5 @@
-9
-noon
-is
-lunch
-for
-most
-noone
-waits
-until
-two
+4
+abcd
+abe
+abc
+abchldp
