@@ -1,6 +1,6 @@
 import heapq
 import sys
-sys.stdin = open('input.txt')
+sys.stdin = open('M.txt')
 
 
 def dijkstra():
