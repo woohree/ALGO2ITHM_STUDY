@@ -29,7 +29,7 @@ result = ''
 digit = len(str(total))
 
 for number in range(digit, 0, -1):
-    n = total // 10 ** (number-1)
+    n = total // 10 ** (number-1) # 2493 // 1000 -> 2
     if number == 4:
         result += 'M' * n
     elif number == 3:
