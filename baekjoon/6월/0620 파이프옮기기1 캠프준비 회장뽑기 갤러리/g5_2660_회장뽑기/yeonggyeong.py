@@ -24,7 +24,7 @@ while True:
 
 warshall()
 
-min_v = float('inf')
+min_v = 999
 for row in range(1, N+1):
     # 각 회장후보들의 가장 먼 관계 찾기
     relations = max(matrix[row][1:])
