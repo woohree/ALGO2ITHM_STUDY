@@ -1,4 +1,8 @@
-3 3
-XXX
-X.X
-XXX
+7 10
+XXXXXXXXXX
+X.X.X....X
+XXX.X.XX.X
+XX....XX.X
+X.XX..X..X
+X..XX...XX
+XXXXXXXXXX
