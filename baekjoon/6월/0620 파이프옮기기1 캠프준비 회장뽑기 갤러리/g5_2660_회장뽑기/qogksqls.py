@@ -30,7 +30,7 @@ while 1:
     matrix[a].append(b)
     matrix[b].append(a)
 
-score = float(1e9)
+score = 50
 candidates = []
 for i in range(1, N + 1):
     temp = bfs(i)
