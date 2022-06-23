@@ -44,6 +44,7 @@ print(answer)
 
 '''
 from collections import deque
+
 def bfs(q):
     ans = 0
     while q:

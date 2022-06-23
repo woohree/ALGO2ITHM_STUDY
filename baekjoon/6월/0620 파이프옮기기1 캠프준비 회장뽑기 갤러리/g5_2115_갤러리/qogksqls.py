@@ -4,7 +4,7 @@ sys.stdin = open('B.txt')
 M, N = map(int, sys.stdin.readline().rstrip().split())
 matrix = [list(sys.stdin.readline().rstrip()) for _ in range(M)]
 
-garo_count, sero_count = 0, 0
+garo_count = 0
 for i in range(M-1):
     top, bottom = 0, 0
     for j in range(N):
@@ -30,6 +30,8 @@ for i in range(M-1):
                 if top:
                     top -= 1
             bottom = 0
+
+sero_count = 0
 for j in range(N-1):
     left, right = 0, 0
     for i in range(M):
