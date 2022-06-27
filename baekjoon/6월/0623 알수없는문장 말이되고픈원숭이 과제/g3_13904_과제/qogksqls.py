@@ -5,7 +5,6 @@ sys.stdin = open('B.txt')
 # [[1, 20], [2, 50], [3, 30], [4, 10], [4, 40], [4, 60], [6, 5]]
 # 1  2  3  4  5  6
 # 30 50 40 60 5
-
 N = int(sys.stdin.readline().rstrip())
 dw = [list(map(int, sys.stdin.readline().rstrip().split())) for _ in range(N)]
 dw.sort(key=lambda x: x[1], reverse=True)
