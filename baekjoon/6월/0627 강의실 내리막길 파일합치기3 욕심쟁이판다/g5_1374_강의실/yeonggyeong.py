@@ -1,6 +1,8 @@
 import sys, heapq
 sys.stdin = open('G.txt')
 
+N = int(sys.stdin.readline())
+
 classes = [list(map(int, sys.stdin.readline().split()[1:])) for _ in range(N)]
 # 시작 시간으로 정렬
 classes.sort(key=lambda x: x[0])
