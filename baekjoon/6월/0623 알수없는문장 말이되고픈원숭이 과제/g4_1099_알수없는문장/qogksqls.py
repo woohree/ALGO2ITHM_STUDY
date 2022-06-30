@@ -15,9 +15,6 @@ for _ in range(N):
     if L >= len(word):
         words[len(word)].append(word)
 
-
-
-
 '''
 def dfs(start, ans):
     global answer
