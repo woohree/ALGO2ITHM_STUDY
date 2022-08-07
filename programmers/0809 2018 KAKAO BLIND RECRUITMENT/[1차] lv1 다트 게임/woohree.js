@@ -3,12 +3,12 @@ function solution(dartResult) {
   const scores = []
   let score
   for (let i = 0; i < dartResult.length; i++) {
-      if (dartResult[i] >= 0 && dartResult[i] < 10) {
-          if (dartResult[i] == 1 && dartResult[i+1] == 0) {
+      if (dartResult[i] >= 0 && dartResult[i] < 10) {         // 숫자인 경우,
+          if (dartResult[i] == 1 && dartResult[i+1] == 0) {   // 10인 경우,
               score = 10
               i++
           } 
-          else {
+          else {                                              // 0~9인 경우,
               score = Number(dartResult[i])
           }
       }
@@ -31,6 +31,6 @@ function solution(dartResult) {
           scores[scores.length-1] *= -1
       }
   }
-  answer = scores.reduce((acc, score) => acc + score, answer)
+  answer = scores.reduce((acc, score) => acc + score, answer)  // reduce 한 번 써보고 싶었음^^
   return answer
 }
