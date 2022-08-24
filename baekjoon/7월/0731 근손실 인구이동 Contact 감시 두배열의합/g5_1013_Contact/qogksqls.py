@@ -1,4 +1,4 @@
-import sys
+import re, sys
 sys.stdin = open('B.txt')
 
 '''
@@ -7,6 +7,22 @@ sys.stdin = open('B.txt')
 '''
 
 
+T = int(sys.stdin.readline())
+results = []
+
+for _ in range(T):
+    sign = sys.stdin.readline().replace('\n', '')
+    p = re.compile('(100+1+|01)+')
+    m = p.fullmatch(sign)
+    if m:
+        results.append("YES")
+    else:
+        results.append("NO")
+
+for result in results:
+    sys.stdout.write(str(result) + '\n')
+
+'''
 def dfs(s):
     global flag
     if s == len_sign:
@@ -48,3 +64,4 @@ for _ in range(T):
         print('YES')
     else:
         print('NO')
+'''

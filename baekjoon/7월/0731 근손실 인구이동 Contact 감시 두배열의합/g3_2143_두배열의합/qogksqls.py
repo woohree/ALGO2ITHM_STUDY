@@ -31,7 +31,7 @@ while b < m:
     b += 1
 
 sums1.sort()  # [1, 1, 2, 3, 3, 4, 4, 5, 6, 7]
-sums2.sort()  # [1, 2, 3, 4, 5, 6]
+sums2.sort()  # [1, 2, 3, 4, 4, 5, 6]
 
 '''
 sum2에서 (T - sum1[i])에 해당하는 숫자의 개수를 찾는 과정
@@ -41,8 +41,8 @@ le와 ri는 각각 해당 숫자가 처음으로 나오는 인덱스와 다를 �
 '''
 ans = 0
 for i in range(len(sums1)):
-    le = bisect.bisect_left(sums2, T - sums1[i])
-    ri = bisect.bisect_right(sums2, T - sums1[i])
+    le = bisect.bisect_left(sums2, T - sums1[i])  # 3
+    ri = bisect.bisect_right(sums2, T - sums1[i]) # 5
     ans += ri - le
 print(ans)
 
